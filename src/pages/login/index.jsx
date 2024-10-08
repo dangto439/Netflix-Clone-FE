@@ -14,7 +14,7 @@ function Login() {
 
       <div className="wrapper">
         <div className="login__logo">
-          <Link to="/">
+          <Link to="/home">
             <img
               alt="image error"
               src="https://png.pngtree.com/png-vector/20240627/ourmid/pngtree-ninja-cartoon-logo-vector-png-image_12858146.png"

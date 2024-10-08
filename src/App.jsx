@@ -16,10 +16,6 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: "/",
-          element: <HomePage />,
-        },
-        {
           path: "/movies-management",
           element: <MoivesManagement />,
         },
@@ -32,6 +28,10 @@ function App() {
           element: <Contact />,
         },
       ],
+    },
+    {
+      path: "/home",
+      element: <HomePage />,
     },
     {
       path: "/login",

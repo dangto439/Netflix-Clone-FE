@@ -3,11 +3,11 @@ import { SearchOutlined, CloseOutlined, UserOutlined } from "@ant-design/icons";
 import "./index.scss";
 import { useState } from "react";
 
-function Header() {
+function HeaderHome() {
   const [isShowSearch, setIsShowSearch] = useState(false);
 
   return (
-    <header className="header">
+    <header className="headerhome">
       <div className="header__logo">
         <Link to="/home">
           <img
@@ -50,4 +50,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderHome;

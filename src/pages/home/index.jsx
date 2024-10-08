@@ -1,9 +1,12 @@
 import Carousel from "../../components/carousel";
+import Footer from "../../components/footer";
+import HeaderHome from "../../components/header-home";
 import "./index.scss";
 
 function HomePage() {
   return (
     <div>
+      <HeaderHome />
       <Carousel numberOfSlide={1} category={"Trending"} autoplay />
       <h1>Horror</h1>
       <Carousel numberOfSlide={5} category={"Horror"} autoplay />
@@ -19,6 +22,7 @@ function HomePage() {
       <Carousel numberOfSlide={4} category={"Documentary"} autoplay />
       <h1>Animation</h1>
       <Carousel numberOfSlide={3} category={"Animation"} autoplay />
+      <Footer />
     </div>
   );
 }
