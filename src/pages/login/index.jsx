@@ -27,6 +27,10 @@ function Login() {
           <input type="text" placeholder="Username" />
           <input type="password" placeholder="Password" />
           <button>Login</button>
+          <div className="login__redirect">
+            <Link to="/register">Register</Link>
+            <Link to="/forgot-password">Forgot password</Link>
+          </div>
         </div>
       </div>
     </div>

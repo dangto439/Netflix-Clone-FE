@@ -24,10 +24,10 @@ function Header() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">Moives</Link>
+            <Link to="/movies">Moives</Link>
           </li>
           <li>
-            <Link to="/">Contact</Link>
+            <Link to="/contact">Contact</Link>
           </li>
           <li>
             <Link to="/movies-management">Movies Management</Link>

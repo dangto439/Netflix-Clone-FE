@@ -19,8 +19,11 @@ import { useEffect, useState } from "react";
 //Carousel => numberOfSlide = 6 => hien thi 6 Slide
 
 export default function Carousel({
+  // eslint-disable-next-line react/prop-types
   numberOfSlide,
+  // eslint-disable-next-line react/prop-types
   category,
+  // eslint-disable-next-line react/prop-types
   autoplay = false,
 }) {
   const [movies, setMovies] = useState([]);
@@ -29,6 +32,10 @@ export default function Carousel({
       "https://67038f65ab8a8f8927309fc3.mockapi.io/movie"
     );
     setMovies(response.data);
+  };
+
+  const handleClick = (value) => {
+    console.log(value);
   };
 
   useEffect(() => {
@@ -54,7 +61,11 @@ export default function Carousel({
           .filter((movie) => movie.category === category)
           .map((movie) => (
             <SwiperSlide key={movie.id}>
-              <img alt="image error" src={movie.poster_path} />
+              <img
+                alt="image error"
+                src={movie.poster_path}
+                onClick={() => handleClick(movie.id)}
+              />
             </SwiperSlide>
           ))}
       </Swiper>

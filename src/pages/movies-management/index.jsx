@@ -31,9 +31,25 @@ function MoivesManagement() {
       key: "name",
     },
     {
+      title: "Movie category",
+      dataIndex: "category",
+      key: "category",
+    },
+    {
+      title: "Movie description",
+      dataIndex: "description",
+      key: "description",
+    },
+    {
       title: "Poster",
       dataIndex: "poster_path",
       key: "poster_path",
+      render: (value) => <Image alt="image error" src={value} width={50} />,
+    },
+    {
+      title: "Backdrop",
+      dataIndex: "backdrop_path",
+      key: "backdrop_path",
       render: (value) => <Image alt="image error" src={value} width={50} />,
     },
     {
@@ -52,6 +68,21 @@ function MoivesManagement() {
             Delete
           </Button>
         </Popconfirm>
+      ),
+    },
+    {
+      title: "Action",
+      dataIndex: "id",
+      key: "id",
+      render: (value) => (
+        <Button
+          type="primary"
+          onClick={() => {
+            handleUpdateMovie(value);
+          }}
+        >
+          Update
+        </Button>
       ),
     },
   ];
@@ -145,6 +176,9 @@ function MoivesManagement() {
     setDataSource(listAfterDelete);
   };
 
+  const handleUpdateMovie = async (id) => {
+    console.log(`update movie with id = ${id}`);
+  };
   //goi function chay 1 lan dau tien
   useEffect(() => {
     fetchMovie();
