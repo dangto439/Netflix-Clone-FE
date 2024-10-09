@@ -1,0 +1,23 @@
+.movie-detail {
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+  
+    .ant-card {
+      background-color: #2b2b2b;
+      border-radius: 10px;
+  
+      img {
+        border-radius: 10px 10px 0 0;
+      }
+  
+      h3, h4 {
+        color: #e0e0e0;
+      }
+  
+      p {
+        color: #cccccc;
+      }
+    }
+  }
+  

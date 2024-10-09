@@ -7,6 +7,7 @@ import Movies from "./pages/movies";
 import Contact from "./pages/contact";
 import Register from "./pages/register";
 import ForgotPassword from "./pages/forgot-password";
+import MovieDetail from "./pages/movie-detail";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,6 +27,10 @@ function App() {
         {
           path: "/contact",
           element: <Contact />,
+        },
+        {
+          path: "/movie-detail",
+          element: <MovieDetail />,
         },
       ],
     },
