@@ -2,13 +2,13 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 40px;
-    background-color: rgba(0, 0, 0, 0.7); // nền trong suốt
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 12px;
-    color: #fff; // màu chữ trắng trên nền đen
+    color: #fff;
   
     h2 {
       text-align: center;
-      color: #ff0000; // màu chữ đỏ
+      color: #ff0000; 
       margin-bottom: 20px;
     }
   
@@ -34,11 +34,11 @@
   
         svg {
           font-size: 24px;
-          color: #ff0000; // màu biểu tượng đỏ
+          color: #ff0000;
         }
   
         span {
-          color: #ffffff; // màu văn bản trắng
+          color: #ffffff;
         }
       }
     }
