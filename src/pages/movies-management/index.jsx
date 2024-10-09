@@ -29,11 +29,14 @@ function MoivesManagement() {
       title: "Movie name",
       dataIndex: "name",
       key: "name",
+      sorter: (a, b) => a.name.localeCompare(b.name), // Thêm tính năng sắp xếp
     },
     {
       title: "Movie category",
       dataIndex: "category",
       key: "category",
+      filters: options, // Thêm bộ lọc cho danh mục
+      onFilter: (value, record) => record.category.includes(value),
     },
     {
       title: "Movie description",
@@ -86,6 +89,7 @@ function MoivesManagement() {
       ),
     },
   ];
+
   const uploadButton = (
     <button
       style={{
@@ -104,6 +108,7 @@ function MoivesManagement() {
       </div>
     </button>
   );
+
   const [fileList, setFileList] = useState([]);
 
   const getBase64 = (file) =>
@@ -120,43 +125,49 @@ function MoivesManagement() {
     );
     setDataSource(response.data);
   }
+
   async function fetchCategory() {
     const response = await axios.get(
       "https://67038f65ab8a8f8927309fc3.mockapi.io/category"
     );
 
     const formattedOptions = response.data.map((item) => ({
-      label: item.name,
+      text: item.name, // Thay 'label' bằng 'text' để tương thích với `filters`
       value: item.name,
     }));
     setOptions(formattedOptions);
   }
+
   function handleShowModal() {
     fetchCategory();
     setIsOpen(true);
   }
+
   function handleCloseModal() {
     setIsOpen(false);
   }
+
   async function handleSubmit(values) {
-    // upload anh len firebase va tra ve URL
+    // upload ảnh lên firebase và trả về URL
     const url = await uploadFile(values.poster_path.file.originFileObj);
     values.poster_path = url;
 
-    const response = axios.post(
+    const response = await axios.post(
       "https://67038f65ab8a8f8927309fc3.mockapi.io/movie",
       values
     );
-    setDataSource([...dataSource, values]);
+    setDataSource([...dataSource, response.data]); // Thêm dữ liệu từ phản hồi vào dataSource
 
     //clear form
     form.resetFields();
-    //dong modal
+    //đóng modal
     setIsOpen(false);
   }
+
   function handleOk() {
     form.submit();
   }
+
   const handlePreview = async (file) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
@@ -164,10 +175,13 @@ function MoivesManagement() {
     setPreviewImage(file.url || file.preview);
     setPreviewOpen(true);
   };
+
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+
   const handleSelectChange = (values) => {
     console.log(values);
   };
+
   const handleDeleteMovie = async (id) => {
     await axios.delete(
       `https://67038f65ab8a8f8927309fc3.mockapi.io/movie/${id}`
@@ -179,8 +193,10 @@ function MoivesManagement() {
   const handleUpdateMovie = async (id) => {
     console.log(`update movie with id = ${id}`);
   };
-  //goi function chay 1 lan dau tien
+
+  //gọi function chạy 1 lần đầu tiên
   useEffect(() => {
+    fetchCategory();
     fetchMovie();
   }, []);
 
@@ -196,7 +212,6 @@ function MoivesManagement() {
         onOk={handleOk}
         title="Add new movie"
       >
-        {/* antd chia man hinh lam 24 phan */}
         <Form
           labelCol={{
             span: 24,

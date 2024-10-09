@@ -1,3 +1,13 @@
-// .movie-container{
-//     margin-top: 100px;
-// }
+.movie-container {
+    .ant-table {
+      .ant-table-thead > tr > th {
+        // text-align: center;
+        width: 20%; // Đặt chiều rộng cột đều nhau (tùy chỉnh giá trị theo số cột bạn có)
+      }
+  
+      .ant-table-tbody > tr > td {
+        // text-align: center; // Căn giữa nội dung
+      }
+    }
+  }
+  
